@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Checkout | Kijani Kilo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body class="co">
+
+  <!-- Payment method logos (re-used with <use>). Swap in official brand files when you go live. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-mpesa" viewBox="0 0 64 40"><rect width="64" height="40" rx="7" fill="#43B02A"/><text x="32" y="22" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="12.5" fill="#fff">M-PESA</text><rect x="14" y="28" width="36" height="3.5" rx="1.7" fill="#E4002B"/></symbol>
+      <symbol id="i-airtel" viewBox="0 0 64 40"><rect width="64" height="40" rx="7" fill="#E40000"/><text x="32" y="22" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="15" fill="#fff">airtel</text><text x="32" y="33" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="8.5" fill="#fff">money</text></symbol>
+      <symbol id="i-card" viewBox="0 0 64 40"><rect width="64" height="40" rx="7" fill="#0B3D2A"/><rect y="9" width="64" height="7" fill="#031A11"/><rect x="8" y="22" width="12" height="9" rx="2" fill="#F2C94C"/><rect x="26" y="26" width="26" height="3" rx="1.5" fill="#9BE8C3"/></symbol>
+      <symbol id="i-visa" viewBox="0 0 64 40"><rect width="64" height="40" rx="7" fill="#fff" stroke="#D5E3DA"/><text x="32" y="26" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="800" font-size="16" fill="#1A1F71">VISA</text></symbol>
+      <symbol id="i-mastercard" viewBox="0 0 64 40"><rect width="64" height="40" rx="7" fill="#fff" stroke="#D5E3DA"/><circle cx="26" cy="20" r="10.5" fill="#EB001B"/><circle cx="38" cy="20" r="10.5" fill="#F79E1B" fill-opacity=".92"/></symbol>
+      <symbol id="i-amex" viewBox="0 0 64 40"><rect width="64" height="40" rx="7" fill="#2E77BB"/><text x="32" y="25" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="11" fill="#fff">AMEX</text></symbol>
+      <symbol id="i-paypal" viewBox="0 0 64 40"><rect width="64" height="40" rx="7" fill="#fff" stroke="#D5E3DA"/><text x="32" y="25" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="800" font-size="13.5"><tspan fill="#003087">Pay</tspan><tspan fill="#009CDE">Pal</tspan></text></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="co-top">
+    <a class="co-brand" href="kijanikilo.html" aria-label="Kijani Kilo home">
+      <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#009E60"/><path d="M12 27c0-8 5-13 15-14-1 9-6 14-13 14" fill="#fff"/><path d="M13 28c3-5 6-8 10-11" stroke="#009E60" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      <span>Kijani Kilo</span>
+    </a>
+
+    <ol class="co-steps" aria-label="Checkout progress">
+      <li class="is-done"><span>1</span><b>Crate</b></li>
+      <li class="is-on" id="stepDetails"><span>2</span><b>Details</b></li>
+      <li id="stepPay"><span>3</span><b>Payment</b></li>
+      <li id="stepDone"><span>4</span><b>Done</b></li>
+    </ol>
+
+    <span class="co-secure"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-lock"/></svg>Secure checkout</span>
+  </header>
+
+  <main id="main" class="co-main">
+    <div class="co-w">
+
+      <a class="co-back" href="shop.html#cart">&larr; Back to my crate</a>
+      <h1 class="co-title">Checkout</h1>
+
+      <!-- crate is empty -->
+      <section class="co-empty" id="coEmpty" hidden>
+        <h2>Your crate is empty</h2>
+        <p>Add some vegetables first, then come back to pay.</p>
+        <a class="co-btn" href="shop.html">Browse vegetables</a>
+      </section>
+
+      <button type="button" class="sum-toggle" id="sumToggle" aria-expanded="false" aria-controls="receiptCol">
+        <span>Order summary</span><b id="sumToggleTotal">KES 0</b>
+      </button>
+
+      <div class="co-grid" id="coGrid">
+
+        <!-- ================= LEFT: FORM ================= -->
+        <div class="co-left">
+
+          <form id="coForm" novalidate>
+
+            <!-- 1. contact -->
+            <section class="co-card" aria-labelledby="h-contact">
+              <h2 id="h-contact"><span class="num">1</span>Contact details</h2>
+              <div class="grid2">
+                <div class="fld">
+                  <label for="cName">Full name</label>
+                  <input id="cName" name="name" type="text" autocomplete="name" placeholder="Your full name" aria-describedby="cName-err">
+                  <p class="err" id="cName-err" role="alert"></p>
+                </div>
+                <div class="fld">
+                  <label for="cPhone">Phone number</label>
+                  <input id="cPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07XXXXXXXX" aria-describedby="cPhone-err">
+                  <p class="err" id="cPhone-err" role="alert"></p>
+                </div>
+              </div>
+              <div class="fld">
+                <label for="cEmail">Email <i>(optional, for your receipt)</i></label>
+                <input id="cEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="cEmail-err">
+                <p class="err" id="cEmail-err" role="alert"></p>
+              </div>
+            </section>
+
+            <!-- 2. delivery -->
+            <section class="co-card" aria-labelledby="h-del">
+              <h2 id="h-del"><span class="num">2</span>Delivery</h2>
+
+              <div class="seg" role="radiogroup" aria-label="How do you want to get your order?">
+                <label><input type="radio" name="mode" value="delivery" checked><span>Deliver to me</span></label>
+                <label><input type="radio" name="mode" value="pickup"><span>I will pick up</span></label>
+              </div>
+
+              <div id="deliveryFields">
+                <div class="grid2">
+                  <div class="fld">
+                    <label for="cCounty">Town or county</label>
+                    <select id="cCounty" name="county" aria-describedby="cCounty-err">
+                      <option value="">Choose one</option>
+                      <option>Nairobi</option><option>Mombasa</option><option>Kiambu</option><option>Kisumu</option><option>Other (we will confirm)</option>
+                    </select>
+                    <p class="err" id="cCounty-err" role="alert"></p>
+                  </div>
+                  <div class="fld">
+                    <label for="cArea">Area or estate</label>
+                    <input id="cArea" name="area" type="text" autocomplete="address-level2" placeholder="e.g. Kilimani" aria-describedby="cArea-err">
+                    <p class="err" id="cArea-err" role="alert"></p>
+                  </div>
+                </div>
+                <div class="fld">
+                  <label for="cLandmark">Street, building or landmark <i>(optional)</i></label>
+                  <input id="cLandmark" name="landmark" type="text" autocomplete="street-address" placeholder="e.g. Next to Yaya Centre, gate B">
+                </div>
+                <div class="fld">
+                  <label for="cNotes">Note for the rider <i>(optional)</i></label>
+                  <input id="cNotes" name="notes" type="text" placeholder="e.g. Call when you reach the gate">
+                </div>
+              </div>
+
+              <div id="pickupInfo" class="pickup" hidden>
+                <b>Pick up point</b>
+                <span>KCA University Town Campus, Monrovia Plaza, Monrovia Street, Nairobi. Bring your order number.</span>
+              </div>
+
+              <fieldset class="slots">
+                <legend id="slotLegend">Delivery time</legend>
+                <div class="slot-grid" id="slotGrid"></div>
+                <p class="err" id="slot-err" role="alert"></p>
+              </fieldset>
+            </section>
+
+            <!-- 3. payment -->
+            <section class="co-card" aria-labelledby="h-pay" id="paySection">
+              <h2 id="h-pay"><span class="num">3</span>Payment method</h2>
+              <p class="demo-note" id="demoNote" hidden><b>Demo mode.</b> No real money moves yet. Connect your payment accounts in <code>payments.js</code> to go live.</p>
+
+              <div class="methods" role="radiogroup" aria-label="Choose how to pay">
+                <label class="method">
+                  <input type="radio" name="method" value="mpesa" checked>
+                  <span class="m-body"><svg class="m-ico" viewBox="0 0 64 40" aria-hidden="true"><use href="#i-mpesa"/></svg><span class="m-txt"><b>M-Pesa</b><small>Pay with your phone</small></span></span>
+                </label>
+                <label class="method">
+                  <input type="radio" name="method" value="airtel">
+                  <span class="m-body"><svg class="m-ico" viewBox="0 0 64 40" aria-hidden="true"><use href="#i-airtel"/></svg><span class="m-txt"><b>Airtel Money</b><small>Pay with your phone</small></span></span>
+                </label>
+                <label class="method">
+                  <input type="radio" name="method" value="card">
+                  <span class="m-body"><svg class="m-ico" viewBox="0 0 64 40" aria-hidden="true"><use href="#i-card"/></svg><span class="m-txt"><b>Bank card</b><small>Visa, Mastercard, Amex</small></span></span>
+                </label>
+                <label class="method">
+                  <input type="radio" name="method" value="paypal">
+                  <span class="m-body"><svg class="m-ico" viewBox="0 0 64 40" aria-hidden="true"><use href="#i-paypal"/></svg><span class="m-txt"><b>PayPal</b><small>Pay in US dollars</small></span></span>
+                </label>
+              </div>
+
+              <!-- M-Pesa -->
+              <div class="mpanel" id="panel-mpesa">
+                <div class="fld">
+                  <label for="mpPhone">M-Pesa phone number</label>
+                  <input id="mpPhone" type="tel" inputmode="tel" placeholder="07XXXXXXXX" data-auto="1" aria-describedby="mpPhone-err">
+                  <p class="err" id="mpPhone-err" role="alert"></p>
+                </div>
+                <ol class="how">
+                  <li>Tap <b>Pay</b> and an M-Pesa prompt appears on your phone.</li>
+                  <li>Check the amount, then enter your M-Pesa PIN.</li>
+                  <li>We confirm your payment in seconds.</li>
+                </ol>
+                <details class="alt">
+                  <summary>Prefer to pay manually with Paybill?</summary>
+                  <dl>
+                    <div><dt>Paybill</dt><dd><span id="altPaybill">[Paybill]</span></dd></div>
+                    <div><dt>Account number</dt><dd><span class="orderRef">KK-00000</span><button type="button" class="copy" data-copy-ref>Copy</button></dd></div>
+                    <div><dt>Amount</dt><dd><span class="totalRef">KES 0</span></dd></div>
+                  </dl>
+                  <p>After paying, message us your M-Pesa code on WhatsApp and we will confirm your order.</p>
+                </details>
+              </div>
+
+              <!-- Airtel Money -->
+              <div class="mpanel" id="panel-airtel" hidden>
+                <div class="fld">
+                  <label for="arPhone">Airtel Money phone number</label>
+                  <input id="arPhone" type="tel" inputmode="tel" placeholder="073XXXXXXX" data-auto="1" aria-describedby="arPhone-err">
+                  <p class="err" id="arPhone-err" role="alert"></p>
+                </div>
+                <ol class="how">
+                  <li>Tap <b>Pay</b> and a prompt appears on your Airtel line.</li>
+                  <li>Enter your Airtel Money PIN to approve.</li>
+                  <li>We confirm your payment in seconds.</li>
+                </ol>
+              </div>
+
+              <!-- Card -->
+              <div class="mpanel" id="panel-card" hidden>
+                <div class="brands" aria-label="Accepted cards">
+                  <svg viewBox="0 0 64 40" aria-label="Visa"><use href="#i-visa"/></svg>
+                  <svg viewBox="0 0 64 40" aria-label="Mastercard"><use href="#i-mastercard"/></svg>
+                  <svg viewBox="0 0 64 40" aria-label="American Express"><use href="#i-amex"/></svg>
+                </div>
+                <div class="fld">
+                  <label for="ccNumber">Card number</label>
+                  <div class="cc-wrap">
+                    <input id="ccNumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" maxlength="23" aria-describedby="ccNumber-err">
+                    <svg class="cc-brand" id="ccBrand" viewBox="0 0 64 40" aria-hidden="true"><use href="#i-card"/></svg>
+                  </div>
+                  <p class="err" id="ccNumber-err" role="alert"></p>
+                </div>
+                <div class="fld">
+                  <label for="ccName">Name on card</label>
+                  <input id="ccName" type="text" autocomplete="cc-name" placeholder="As printed on the card" aria-describedby="ccName-err">
+                  <p class="err" id="ccName-err" role="alert"></p>
+                </div>
+                <div class="grid2">
+                  <div class="fld">
+                    <label for="ccExp">Expiry (MM / YY)</label>
+                    <input id="ccExp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" maxlength="7" aria-describedby="ccExp-err">
+                    <p class="err" id="ccExp-err" role="alert"></p>
+                  </div>
+                  <div class="fld">
+                    <label for="ccCvv">Security code (CVV)</label>
+                    <input id="ccCvv" type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4" aria-describedby="ccCvv-err">
+                    <p class="err" id="ccCvv-err" role="alert"></p>
+                  </div>
+                </div>
+                <p class="safe"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><use href="#i-lock"/></svg>Your card details are sent over an encrypted connection. Your bank may ask you to confirm the payment.</p>
+              </div>
+
+              <!-- PayPal -->
+              <div class="mpanel" id="panel-paypal" hidden>
+                <div class="pp-box">
+                  <svg viewBox="0 0 64 40" aria-hidden="true"><use href="#i-paypal"/></svg>
+                  <div>
+                    <b>You will be taken to PayPal to finish paying.</b>
+                    <p>PayPal charges in US dollars, so your total is converted: <strong id="ppUsd">USD 0.00</strong> <small id="ppRate"></small></p>
+                  </div>
+                </div>
+                <ol class="how">
+                  <li>Tap <b>Continue to PayPal</b>.</li>
+                  <li>Log in to PayPal and approve the payment.</li>
+                  <li>You come straight back here with your receipt.</li>
+                </ol>
+              </div>
+            </section>
+
+            <!-- terms + pay -->
+            <div class="terms">
+              <label class="check"><input type="checkbox" id="cTerms" aria-describedby="cTerms-err"><span>I agree to the <a href="#" target="_blank" rel="noopener">Terms of service</a> and <a href="contact.html#faq" target="_blank" rel="noopener">Returns policy</a>.</span></label>
+              <p class="err" id="cTerms-err" role="alert"></p>
+            </div>
+
+            <button type="submit" class="pay-btn" id="payBtn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><use href="#i-lock"/></svg><span id="payLabel">Pay KES 0</span></button>
+            <p class="pay-fine">By paying you confirm your order. You only pay for what we weigh: if the final weight is lower, we refund the difference.</p>
+          </form>
+        </div>
+
+        <!-- ================= RIGHT: PROMO + RECEIPT ================= -->
+        <aside class="co-right" id="receiptCol" aria-label="Order summary and receipt">
+
+          <div class="promo-card">
+            <label for="promoIn">Promo code</label>
+            <div class="promo-row">
+              <input id="promoIn" type="text" placeholder="Enter your code" autocomplete="off" autocapitalize="characters">
+              <button type="button" id="promoBtn">Apply</button>
+            </div>
+            <p class="promo-msg" id="promoMsg" role="status"></p>
+            <div class="promo-tags" id="promoTags" aria-label="Codes you can try"></div>
+          </div>
+
+          <div class="rc" id="receipt">
+            <div class="rc-paper">
+              <span class="rc-stamp" id="rcStamp">Awaiting payment</span>
+
+              <div class="rc-head">
+                <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#009E60"/><path d="M12 27c0-8 5-13 15-14-1 9-6 14-13 14" fill="#fff"/><path d="M13 28c3-5 6-8 10-11" stroke="#009E60" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+                <div><b>Kijani Kilo</b><small>Order receipt</small></div>
+              </div>
+
+              <dl class="rc-meta">
+                <div><dt>Order no.</dt><dd class="orderRef">KK-00000</dd></div>
+                <div><dt>Date</dt><dd id="rcDate"></dd></div>
+                <div><dt>Customer</dt><dd id="rcName" class="muted">Your name</dd></div>
+                <div><dt>Phone</dt><dd id="rcPhone" class="muted">Your phone</dd></div>
+                <div class="wide"><dt id="rcWhereLabel">Deliver to</dt><dd id="rcWhere" class="muted">Your address</dd></div>
+                <div class="wide"><dt>Time</dt><dd id="rcSlot" class="muted">Choose a time</dd></div>
+              </dl>
+
+              <div class="rc-items-head"><span>Item</span><span>Amount</span></div>
+              <ul class="rc-items" id="rcItems"></ul>
+
+              <dl class="rc-totals">
+                <div><dt>Subtotal</dt><dd id="rcSub">KES 0</dd></div>
+                <div id="rcDiscRow" hidden><dt id="rcDiscLabel">Promo</dt><dd id="rcDisc">KES 0</dd></div>
+                <div><dt id="rcDelLabel">Delivery</dt><dd id="rcDel">KES 0</dd></div>
+                <div class="grand"><dt>Total</dt><dd id="rcTotal">KES 0</dd></div>
+              </dl>
+
+              <dl class="rc-pay">
+                <div><dt>Payment method</dt><dd id="rcMethod">M-Pesa</dd></div>
+                <div id="rcRefRow" hidden><dt>Transaction code</dt><dd id="rcRef"></dd></div>
+                <div id="rcPaidRow" hidden><dt>Paid on</dt><dd id="rcPaidAt"></dd></div>
+              </dl>
+
+              <div class="rc-bar" aria-hidden="true"></div>
+              <p class="rc-thanks">Thank you for shopping by the kilo.<br><small>Questions? WhatsApp 0794008285 &middot; hello@kijanikilo.co.ke</small></p>
+            </div>
+            <p class="rc-edit"><a href="shop.html#cart">Change items in my crate</a></p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- ================= PAYMENT SUCCESS ================= -->
+      <section class="co-done" id="coDone" hidden aria-labelledby="doneTitle">
+        <div class="done-stamp" aria-hidden="true">Paid</div>
+        <h2 id="doneTitle">Payment received. Thank you<span id="doneName"></span>!</h2>
+        <p id="doneText">Your order is confirmed and we are getting it ready.</p>
+        <div class="done-actions">
+          <button type="button" class="co-btn" id="printBtn">Print or save receipt</button>
+          <a class="co-btn co-btn--ghost" href="shop.html">Keep shopping</a>
+          <a class="co-btn co-btn--ghost" id="waLink" href="https://wa.me/254794008285" target="_blank" rel="noopener">Message us on WhatsApp</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- mobile pay bar -->
+  <div class="paybar" id="payBar">
+    <div><small>Total</small><b id="barTotal">KES 0</b></div>
+    <button type="submit" form="coForm" id="payBarBtn">Pay now</button>
+  </div>
+
+  <!-- waiting / processing overlay -->
+  <div class="ov" id="payOv" role="dialog" aria-modal="true" aria-labelledby="ovTitle" hidden>
+    <div class="ov-card">
+      <div class="ov-art" id="ovArt" aria-hidden="true"></div>
+      <h2 id="ovTitle">Working on it</h2>
+      <p id="ovText"></p>
+      <ol class="ov-steps" id="ovSteps" hidden></ol>
+      <p class="ov-timer" id="ovTimer" hidden></p>
+      <p class="ov-err" id="ovErr" role="alert" hidden></p>
+      <div class="ov-actions">
+        <button type="button" class="co-btn co-btn--ghost" id="ovCancel">Cancel</button>
+        <button type="button" class="co-btn" id="ovRetry" hidden>Try again</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="co-foot">
+    <p>&copy; <span id="year">2026</span> Kijani Kilo &middot; <a href="contact.html">Contact</a> &middot; <a href="contact.html#faq">Help</a> &middot; <a href="kijanikilo.html">Home</a></p>
+    <p class="co-foot-pay" aria-label="Accepted payment methods">
+      <svg viewBox="0 0 64 40" aria-label="M-Pesa"><use href="#i-mpesa"/></svg>
+      <svg viewBox="0 0 64 40" aria-label="Airtel Money"><use href="#i-airtel"/></svg>
+      <svg viewBox="0 0 64 40" aria-label="Visa"><use href="#i-visa"/></svg>
+      <svg viewBox="0 0 64 40" aria-label="Mastercard"><use href="#i-mastercard"/></svg>
+      <svg viewBox="0 0 64 40" aria-label="PayPal"><use href="#i-paypal"/></svg>
+    </p>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="payments.js"></script>
+  <script src="checkout.js"></script>
+</body>
+</html>

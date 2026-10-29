@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop fresh vegetables | Kijani Kilo</title>
+
+  <!-- Lets the CSS know JavaScript is running -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Fonts: Plus Jakarta Sans (interface) + Fraunces (footer headings) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- =====================================================
+        HEADER
+        Static and full-width at the top of the page.
+        After scrolling, JS adds .is-floating and it pops out
+        into a pill-shaped island.
+        ===================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="nav" id="nav">
+
+      <!-- Logo -->
+      <a class="brand" href="kijanikilo.html" aria-label="Kijani Kilo home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="20" class="brand-mark-bg"/>
+          <path d="M12 27c0-8 5-13 15-14-1 9-6 14-13 14" class="brand-mark-leaf"/>
+          <path d="M13 28c3-5 6-8 10-11" class="brand-mark-vein"/>
+        </svg>
+        <span class="brand-text">Kijani Kilo</span>
+      </a>
+
+      <!-- Main navigation (desktop) -->
+      <nav class="nav-links" aria-label="Main">
+        <ul>
+          <li><a href="kijanikilo.html">Home</a></li>
+          <li><a href="shop.html" aria-current="page">Shop</a></li>
+
+          <li class="has-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false" aria-controls="dd-categories">
+              Categories
+              <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="dropdown" id="dd-categories">
+              <li><a href="shop.html#leafy-greens">Leafy greens</a></li>
+              <li><a href="shop.html#root-vegetables">Root vegetables</a></li>
+              <li><a href="shop.html#fruit-vegetables">Fruit vegetables</a></li>
+              <li><a href="shop.html#herbs">Herbs</a></li>
+              <li><a href="shop.html#onions-garlic">Onions &amp; garlic</a></li>
+              <li><a href="shop.html#baskets">Ready-made baskets</a></li>
+            </ul>
+          </li>
+
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="kijanikilo.html#about">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchToggle" aria-label="Search vegetables" aria-expanded="false" aria-controls="searchPanel">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+
+        <a class="icon-btn" href="shop.html#cart" aria-label="Cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>
+          <span class="cart-badge" id="cartBadge" hidden>0</span>
+        </a>
+
+        <a class="signin" href="login.html">Sign in</a>
+        <a class="btn-cta" href="shop.html">Shop now</a>
+
+        <!-- Hamburger (mobile) -->
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Search drop-down -->
+      <form class="search-panel" id="searchPanel" role="search">
+        <label class="sr-only" for="searchInput">Search vegetables</label>
+        <input id="searchInput" type="search" placeholder="Search vegetables, e.g. tomatoes or sukuma" autocomplete="off">
+        <button type="submit" class="btn-cta btn-cta--solid">Search</button>
+      </form>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <ul>
+          <li><a href="kijanikilo.html">Home</a></li>
+          <li><a href="shop.html" aria-current="page">Shop</a></li>
+          <li class="mobile-group">
+            <span>Categories</span>
+            <ul>
+              <li><a href="shop.html#leafy-greens">Leafy greens</a></li>
+              <li><a href="shop.html#root-vegetables">Root vegetables</a></li>
+              <li><a href="shop.html#fruit-vegetables">Fruit vegetables</a></li>
+              <li><a href="shop.html#herbs">Herbs</a></li>
+              <li><a href="shop.html#onions-garlic">Onions &amp; garlic</a></li>
+              <li><a href="shop.html#baskets">Ready-made baskets</a></li>
+            </ul>
+          </li>
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="kijanikilo.html#about">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Sign in</a></li>
+        </ul>
+        <a class="btn-cta btn-cta--solid btn-cta--block" href="shop.html">Shop now</a>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="main" class="sh">
+
+    <!-- ================= HERO ================= -->
+    <div class="sh-hero-wrap sh-w">
+      <section class="sh-hero" aria-labelledby="shTitle">
+        <div class="sh-hero-text">
+          <span class="sh-badge">Free delivery above KES 2,000</span>
+          <h1 id="shTitle">Fresh by the kilo.<br>Weighed your way.</h1>
+          <p>Pick your weight on any card, watch the price update, and fill your crate. Pay with M-Pesa and we bring it to your door.</p>
+          <div class="sh-cta">
+            <button type="button" class="btn-white" data-jump="leafy-greens">Start shopping</button>
+            <button type="button" class="btn-line" data-jump="baskets">Build a basket</button>
+          </div>
+        </div>
+
+        <!-- YOUR IMAGE is the banner background: save it as images/shop-hero.jpg (see shop.css, .sh-hero) -->
+        <div class="sh-photo">
+          <div class="float-card float-card--a"><span>Sukuma wiki</span><b>KES 60 per kg</b></div>
+          <div class="float-card float-card--b"><span>Pay with</span><b>M-Pesa</b></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= CATEGORY RAIL ================= -->
+    <nav class="sh-rail" aria-label="Product categories">
+      <div class="rail-scroll" id="railScroll"></div>
+    </nav>
+
+    <div class="sh-w">
+
+      <!-- ================= TOOLBAR ================= -->
+      <div class="sh-tools">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <label class="sr-only" for="q">Search vegetables</label>
+          <input id="q" type="search" placeholder="Search vegetables, e.g. sukuma or garlic" autocomplete="off">
+        </div>
+        <div class="sort-box">
+          <label class="sr-only" for="sort">Sort products</label>
+          <select id="sort">
+            <option value="default">Sort: Featured</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </div>
+        <label class="sw"><input type="checkbox" id="stock"><span></span>In stock only</label>
+        <p class="result-note" id="resultNote" aria-live="polite"></p>
+      </div>
+
+      <!-- ================= PRODUCT SECTIONS (built by shop.js) ================= -->
+      <div id="sections"></div>
+
+      <div class="empty" id="none" hidden>
+        <h2>We could not find that</h2>
+        <p>Try another name, such as “tomatoes” or “kale”.</p>
+        <button type="button" class="btn-cta btn-cta--solid" id="clearSearch"><span>Clear search</span></button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= CRATE (cart summary) ================= -->
+  <button type="button" class="crate-bar" id="crateBar" aria-hidden="true" tabindex="-1">
+    <span class="bar-thumbs" id="barThumbs"></span>
+    <span class="bar-text" id="barText"></span>
+    <span class="bar-total" id="barTotal"></span>
+    <span class="bar-go">View crate</span>
+  </button>
+
+  <div class="cr-ov" id="crateOv"></div>
+
+  <aside class="cr" id="crate" role="dialog" aria-modal="true" aria-labelledby="crTitle" aria-hidden="true">
+    <div class="cr-head">
+      <div>
+        <h2 id="crTitle">Your crate</h2>
+        <p id="crateCount"></p>
+      </div>
+      <button type="button" class="cr-x" id="crateClose" aria-label="Close crate">&times;</button>
+    </div>
+
+    <div class="cr-body" id="crateBody"></div>
+
+    <div class="cr-foot" id="crateFoot" hidden>
+      <div class="cr-row"><span>Subtotal</span><span id="sumSub"></span></div>
+      <div class="cr-row" id="sumDiscRow" hidden><span id="sumDiscLabel">Promo</span><span id="sumDisc"></span></div>
+      <div class="cr-row"><span>Delivery</span><span id="sumDel"></span></div>
+      <div class="cr-row total"><span>Total</span><span id="sumTotal"></span></div>
+      <button type="button" class="btn-cta btn-cta--solid cr-checkout" id="checkoutBtn"><span>Checkout</span></button>
+      <button type="button" class="cr-clear" id="clearCrate">Clear crate</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="site-footer">
+
+    <!-- Decorative plant artwork (left side, very faint) -->
+    <svg class="footer-art" viewBox="0 0 400 520" aria-hidden="true" focusable="false">
+      <defs>
+        <path id="leaf" d="M0 0C28-44 92-58 128-34 104 8 40 30 0 0Z"/>
+      </defs>
+      <g fill="#fff">
+        <path d="M196 520C200 400 196 280 204 120" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <use href="#leaf" transform="translate(198 430) rotate(-20) scale(1.2)"/>
+        <use href="#leaf" transform="translate(202 400) rotate(200) scale(1.2)"/>
+        <use href="#leaf" transform="translate(199 340) rotate(-35) scale(1.05)"/>
+        <use href="#leaf" transform="translate(203 310) rotate(215) scale(1.05)"/>
+        <use href="#leaf" transform="translate(201 250) rotate(-50) scale(0.95)"/>
+        <use href="#leaf" transform="translate(205 220) rotate(230) scale(0.95)"/>
+        <use href="#leaf" transform="translate(203 165) rotate(-65) scale(0.8)"/>
+        <use href="#leaf" transform="translate(206 140) rotate(245) scale(0.8)"/>
+        <use href="#leaf" transform="translate(204 112) rotate(-95) scale(0.65)"/>
+      </g>
+    </svg>
+
+    <div class="footer-inner">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a class="footer-logo" href="kijanikilo.html" aria-label="Kijani Kilo home">
+          <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true">
+            <circle cx="20" cy="20" r="20" fill="#fff"/>
+            <path d="M12 27c0-8 5-13 15-14-1 9-6 14-13 14" fill="#009E60"/>
+            <path d="M13 28c3-5 6-8 10-11" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span>Kijani Kilo</span>
+        </a>
+        <p>Fresh vegetables, weighed your way.</p>
+        <p class="footer-pay">We accept M-Pesa, Visa and Mastercard.</p>
+      </div>
+
+      <!-- Column 1 -->
+      <div class="footer-col">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="shop.html">All vegetables</a></li>
+          <li><a href="shop.html#leafy-greens">Leafy greens</a></li>
+          <li><a href="shop.html#root-vegetables">Root vegetables</a></li>
+          <li><a href="shop.html#fruit-vegetables">Fruit vegetables</a></li>
+          <li><a href="shop.html#herbs">Herbs</a></li>
+          <li><a href="shop.html#onions-garlic">Onions &amp; garlic</a></li>
+        </ul>
+        <h3>Baskets and offers</h3>
+        <ul>
+          <li><a href="shop.html#baskets">Weekly family box</a></li>
+          <li><a href="shop.html#baskets">Salad pack</a></li>
+          <li><a href="shop.html">Flash deals</a></li>
+          <li><a href="contact.html">Bulk and business orders</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="footer-col">
+        <h3>Customer care</h3>
+        <ul>
+          <li><a href="#">How it works</a></li>
+          <li><a href="contact.html">Delivery areas and fees</a></li>
+          <li><a href="contact.html">Track your order</a></li>
+          <li><a href="contact.html#faq">FAQs</a></li>
+          <li><a href="contact.html#faq">Returns and refunds</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+        <h3>Your account</h3>
+        <ul>
+          <li><a href="login.html">Sign in</a></li>
+          <li><a href="login.html?tab=register">Create an account</a></li>
+          <li><a href="login.html">My orders</a></li>
+          <li><a href="login.html">Wishlist</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="kijanikilo.html#about">About us</a></li>
+          <li><a href="#">Our farmers</a></li>
+          <li><a href="#">Recipes</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Cookie policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Kijani Kilo. All rights reserved.</p>
+
+      <!-- SOCIAL LINKS: replace each href="#" with your real page URL -->
+      <ul class="socials" aria-label="Social media">
+        <li><a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="currentColor"/></svg></a></li>
+        <li><a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a></li>
+        <li><a href="#" aria-label="X (Twitter)" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/></svg></a></li>
+        <li><a href="#" aria-label="YouTube" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.75 15.02l5.75-3.27-5.75-3.27z" fill="currentColor"/></svg></a></li>
+        <li><a href="#" aria-label="WhatsApp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a></li>
+      </ul>
+
+      <a class="to-top" href="#" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="products.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>

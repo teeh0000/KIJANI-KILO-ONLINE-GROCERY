@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact us | Kijani Kilo</title>
+
+  <!-- Lets the CSS know JavaScript is running -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Fonts: Plus Jakarta Sans (interface) + Fraunces (footer headings) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- =====================================================
+       HEADER
+       Static and full-width at the top of the page.
+       After scrolling, JS adds .is-floating and it pops out
+       into a pill-shaped island.
+       ===================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="nav" id="nav">
+
+      <!-- Logo -->
+      <a class="brand" href="kijanikilo.html" aria-label="Kijani Kilo home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="20" class="brand-mark-bg"/>
+          <path d="M12 27c0-8 5-13 15-14-1 9-6 14-13 14" class="brand-mark-leaf"/>
+          <path d="M13 28c3-5 6-8 10-11" class="brand-mark-vein"/>
+        </svg>
+        <span class="brand-text">Kijani Kilo</span>
+      </a>
+
+      <!-- Main navigation (desktop) -->
+      <nav class="nav-links" aria-label="Main">
+        <ul>
+          <li><a href="kijanikilo.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+
+          <li class="has-dropdown">
+            <button class="dropdown-toggle" aria-expanded="false" aria-controls="dd-categories">
+              Categories
+              <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="dropdown" id="dd-categories">
+              <li><a href="shop.html#leafy-greens">Leafy greens</a></li>
+              <li><a href="shop.html#root-vegetables">Root vegetables</a></li>
+              <li><a href="shop.html#fruit-vegetables">Fruit vegetables</a></li>
+              <li><a href="shop.html#herbs">Herbs</a></li>
+              <li><a href="shop.html#onions-garlic">Onions &amp; garlic</a></li>
+              <li><a href="shop.html#baskets">Ready-made baskets</a></li>
+            </ul>
+          </li>
+
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="kijanikilo.html#about">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchToggle" aria-label="Search vegetables" aria-expanded="false" aria-controls="searchPanel">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+
+        <a class="icon-btn" href="shop.html#cart" aria-label="Cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>
+          <span class="cart-badge" id="cartBadge" hidden>0</span>
+        </a>
+
+        <a class="signin" href="login.html">Sign in</a>
+        <a class="btn-cta" href="shop.html">Shop now</a>
+
+        <!-- Hamburger (mobile) -->
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Search drop-down -->
+      <form class="search-panel" id="searchPanel" role="search">
+        <label class="sr-only" for="searchInput">Search vegetables</label>
+        <input id="searchInput" type="search" placeholder="Search vegetables, e.g. tomatoes or sukuma" autocomplete="off">
+        <button type="submit" class="btn-cta btn-cta--solid">Search</button>
+      </form>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <ul>
+          <li><a href="kijanikilo.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li class="mobile-group">
+            <span>Categories</span>
+            <ul>
+              <li><a href="shop.html#leafy-greens">Leafy greens</a></li>
+              <li><a href="shop.html#root-vegetables">Root vegetables</a></li>
+              <li><a href="shop.html#fruit-vegetables">Fruit vegetables</a></li>
+              <li><a href="shop.html#herbs">Herbs</a></li>
+              <li><a href="shop.html#onions-garlic">Onions &amp; garlic</a></li>
+              <li><a href="shop.html#baskets">Ready-made baskets</a></li>
+            </ul>
+          </li>
+          <li><a href="offers.html">Offers</a></li>
+          <li><a href="kijanikilo.html#about">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a href="login.html">Sign in</a></li>
+        </ul>
+        <a class="btn-cta btn-cta--solid btn-cta--block" href="shop.html">Shop now</a>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="main" class="ct">
+
+    <!-- ================= HERO ================= -->
+    <section class="ct-hero">
+      <svg class="ct-art" viewBox="0 0 560 560" aria-hidden="true" focusable="false">
+        <defs><path id="leaf-hero" d="M0 0C28-44 92-58 128-34 104 8 40 30 0 0Z"/></defs>
+        <g fill="none" stroke="#fff" stroke-width="3">
+          <circle cx="280" cy="280" r="270"/>
+          <circle cx="280" cy="280" r="215" stroke-dasharray="3 14" stroke-linecap="round" stroke-width="5"/>
+        </g>
+        <g fill="#fff">
+          <path d="M276 520C280 400 276 300 284 150" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <use href="#leaf-hero" transform="translate(278 440) rotate(-20) scale(1.5)"/>
+          <use href="#leaf-hero" transform="translate(282 410) rotate(200) scale(1.5)"/>
+          <use href="#leaf-hero" transform="translate(279 340) rotate(-38) scale(1.3)"/>
+          <use href="#leaf-hero" transform="translate(283 310) rotate(218) scale(1.3)"/>
+          <use href="#leaf-hero" transform="translate(281 250) rotate(-55) scale(1.1)"/>
+          <use href="#leaf-hero" transform="translate(285 222) rotate(235) scale(1.1)"/>
+          <use href="#leaf-hero" transform="translate(283 175) rotate(-80) scale(.85)"/>
+        </g>
+      </svg>
+
+      <div class="ct-w ct-hero-inner">
+        <h1>Talk to us.<br>We weigh every word.</h1>
+        <p class="ct-lead">Questions about an order, a delivery or a bulk quote? Send us a message and a real person at Kijani Kilo will reply.</p>
+        <p class="ct-status" id="openStatus"><span class="ct-dot" aria-hidden="true"></span><span id="openText">Checking our hours</span></p>
+      </div>
+
+      <svg class="ct-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90V44C240 0 480 84 720 52S1200 4 1440 44V90z" fill="#fff"/></svg>
+    </section>
+
+    <!-- ================= WAYS TO REACH US (slim bar) ================= -->
+    <section class="ct-w ct-reach" aria-label="Ways to reach us">
+      <ul class="reach">
+
+        <!-- WhatsApp number: country code, no plus or spaces -->
+        <li class="reach-item reach-item--wa">
+          <a class="reach-link" href="https://wa.me/254794008285" target="_blank" rel="noopener">
+            <span class="reach-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <span class="reach-text"><small>Fastest reply</small><b>Chat on WhatsApp</b></span>
+            <svg class="reach-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+
+        <li class="reach-item">
+          <a class="reach-link" href="tel:+254794008285">
+            <span class="reach-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span class="reach-text"><small>Call us</small><b>0794008285</b></span>
+          </a>
+        </li>
+
+        <li class="reach-item">
+          <a class="reach-link" href="mailto:hello@kijanikilo.co.ke">
+            <span class="reach-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+            <span class="reach-text"><small>Email us</small><b>hello@kijanikilo.co.ke</b></span>
+          </a>
+        </li>
+
+        <li class="reach-item">
+          <div class="reach-link">
+            <span class="reach-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <span class="reach-text">
+              <small>Opening hours</small>
+              <ul class="hours">
+                <li data-days="1,2,3,4,5,6">Mon to Sat, 7 am to 7 pm</li>
+                <li data-days="0">Sunday, closed</li>
+              </ul>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================= SLIP + SIDE ================= -->
+    <section class="ct-w ct-main">
+
+      <!-- THE MESSAGE SLIP -->
+      <div class="slip" id="slip">
+        <div class="slip-head">
+          <h2>Message slip</h2>
+          <div class="slip-meta"><b id="slipNo">No. 0000</b><span id="slipDate"></span></div>
+        </div>
+        <p class="slip-intro">Fill in the lines below and we will get back to you.</p>
+
+        <form class="ct-form" id="contactForm" novalidate>
+
+          <div class="ct-two">
+            <div class="ct-field">
+              <label for="ct-name">Your name</label>
+              <input id="ct-name" name="name" type="text" autocomplete="name" placeholder="Full name" aria-describedby="ct-name-err">
+              <p class="ct-err" id="ct-name-err" role="alert"></p>
+            </div>
+            <div class="ct-field">
+              <label for="ct-contact">Phone or email</label>
+              <input id="ct-contact" name="contact" type="text" autocomplete="email" placeholder="07XXXXXXXX or email" aria-describedby="ct-contact-err">
+              <p class="ct-err" id="ct-contact-err" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="ct-field">
+            <fieldset>
+              <legend>What is it about?</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="topic" value="Order help"><span>Order help</span></label>
+                <label class="chip"><input type="radio" name="topic" value="Delivery"><span>Delivery</span></label>
+                <label class="chip"><input type="radio" name="topic" value="Bulk and business"><span>Bulk and business</span></label>
+                <label class="chip"><input type="radio" name="topic" value="Feedback"><span>Feedback</span></label>
+                <label class="chip"><input type="radio" name="topic" value="Something else"><span>Something else</span></label>
+              </div>
+              <p class="ct-err" id="ct-topic-err" role="alert"></p>
+            </fieldset>
+          </div>
+
+          <div class="reveal" id="orderReveal">
+            <div>
+              <div class="ct-field">
+                <label for="ct-order">Order number (optional)</label>
+                <input id="ct-order" name="order" type="text" placeholder="e.g. KK-48213">
+              </div>
+            </div>
+          </div>
+
+          <div class="ct-field">
+            <label for="ct-msg">Your message</label>
+            <textarea id="ct-msg" name="message" maxlength="500" placeholder="Tell us what you need, and which vegetables and weights if it is about an order." aria-describedby="ct-msg-err"></textarea>
+            <p class="ct-err" id="ct-msg-err" role="alert"></p>
+
+            <!-- The scale: weighs your message (500 characters = 1 kg) -->
+            <div class="scale">
+              <svg class="dial" viewBox="0 0 160 104" aria-hidden="true" focusable="false">
+                <path class="track" d="M20 90 A60 60 0 0 1 140 90"/>
+                <path class="fill" id="dialFill" d="M20 90 A60 60 0 0 1 140 90" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+                <g id="ticks"></g>
+                <text x="20" y="102" text-anchor="middle">0</text>
+                <text x="140" y="102" text-anchor="middle">1 kg</text>
+                <g class="needle" id="needle" style="transform: rotate(-90deg)">
+                  <line x1="80" y1="90" x2="80" y2="42"/>
+                </g>
+                <circle class="hub" cx="80" cy="90" r="7"/>
+              </svg>
+              <div class="scale-read">
+                <b id="kgOut">0.00 kg</b>
+                <span id="kgNote">Start typing to weigh it</span>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="ct-send" id="sendBtn"><span>Send message</span></button>
+          <p class="ct-fine">We only use your details to reply to you.</p>
+        </form>
+
+        <!-- Shown after sending -->
+        <div class="sent" role="status" aria-live="polite">
+          <div class="stamp" aria-hidden="true">Received<small id="stampNo"></small></div>
+          <h3>Thank you, <span id="sentName"></span>.</h3>
+          <p>Your message is in. We will reply as soon as we can, usually through the phone or email you gave us.</p>
+          <button type="button" class="ct-again" id="sendAgain">Send another message</button>
+        </div>
+      </div>
+
+      <!-- SIDE COLUMN -->
+      <aside class="ct-side">
+
+        <div class="mapcard">
+          <!-- Live Google Map (no API key needed). To point somewhere else, change the text after q= in BOTH links below. -->
+          <iframe
+            title="Map showing KCA University Town Campus, Monrovia Street, Nairobi"
+            src="https://www.google.com/maps?q=KCA+University+Town+Campus+Monrovia+Street+Nairobi&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+          <div class="mapcard-body">
+            <p>KCA University Town Campus, Monrovia Plaza, Monrovia Street, Nairobi</p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=KCA+University+Town+Campus+Monrovia+Street+Nairobi" target="_blank" rel="noopener">Get directions</a>
+          </div>
+        </div>
+
+        <div>
+          <h2>We deliver to</h2>
+          <ul class="areas">
+            <li>Nairobi</li><li>Mombasa</li><li>Kiambu</li><li>Kisumu</li>
+          </ul>
+        </div>
+
+        <div class="faq" id="faq">
+          <h2>Quick answers</h2>
+          <details>
+            <summary>Can I change the weight after I order?</summary>
+            <p>Message us on WhatsApp as soon as you can with your order number. If it has not been packed yet, we will update it.</p>
+          </details>
+          <details>
+            <summary>What if my vegetables weigh less than I paid for?</summary>
+            <p>You only pay for what we weigh. If anything looks off, tell us and we will put it right.</p>
+          </details>
+          <details>
+            <summary>How do I get a bulk or restaurant quote?</summary>
+            <p>Choose “Bulk and business” on the message slip and tell us your weekly kilos.</p>
+          </details>
+        </div>
+      </aside>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <!-- Decorative plant artwork (left side, very faint) -->
+    <svg class="footer-art" viewBox="0 0 400 520" aria-hidden="true" focusable="false">
+      <defs>
+        <path id="leaf" d="M0 0C28-44 92-58 128-34 104 8 40 30 0 0Z"/>
+      </defs>
+      <g fill="#fff">
+        <path d="M196 520C200 400 196 280 204 120" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <use href="#leaf" transform="translate(198 430) rotate(-20) scale(1.2)"/>
+        <use href="#leaf" transform="translate(202 400) rotate(200) scale(1.2)"/>
+        <use href="#leaf" transform="translate(199 340) rotate(-35) scale(1.05)"/>
+        <use href="#leaf" transform="translate(203 310) rotate(215) scale(1.05)"/>
+        <use href="#leaf" transform="translate(201 250) rotate(-50) scale(0.95)"/>
+        <use href="#leaf" transform="translate(205 220) rotate(230) scale(0.95)"/>
+        <use href="#leaf" transform="translate(203 165) rotate(-65) scale(0.8)"/>
+        <use href="#leaf" transform="translate(206 140) rotate(245) scale(0.8)"/>
+        <use href="#leaf" transform="translate(204 112) rotate(-95) scale(0.65)"/>
+      </g>
+    </svg>
+
+    <div class="footer-inner">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a class="footer-logo" href="kijanikilo.html" aria-label="Kijani Kilo home">
+          <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true">
+            <circle cx="20" cy="20" r="20" fill="#fff"/>
+            <path d="M12 27c0-8 5-13 15-14-1 9-6 14-13 14" fill="#009E60"/>
+            <path d="M13 28c3-5 6-8 10-11" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span>Kijani Kilo</span>
+        </a>
+        <p>Fresh vegetables, weighed your way.</p>
+        <p class="footer-pay">We accept M-Pesa, Visa and Mastercard.</p>
+      </div>
+
+      <!-- Column 1 -->
+      <div class="footer-col">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="shop.html">All vegetables</a></li>
+          <li><a href="shop.html#leafy-greens">Leafy greens</a></li>
+          <li><a href="shop.html#root-vegetables">Root vegetables</a></li>
+          <li><a href="shop.html#fruit-vegetables">Fruit vegetables</a></li>
+          <li><a href="shop.html#herbs">Herbs</a></li>
+          <li><a href="shop.html#onions-garlic">Onions &amp; garlic</a></li>
+        </ul>
+        <h3>Baskets and offers</h3>
+        <ul>
+          <li><a href="shop.html#baskets">Weekly family box</a></li>
+          <li><a href="shop.html#baskets">Salad pack</a></li>
+          <li><a href="shop.html">Flash deals</a></li>
+          <li><a href="contact.html">Bulk and business orders</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="footer-col">
+        <h3>Customer care</h3>
+        <ul>
+          <li><a href="#">How it works</a></li>
+          <li><a href="contact.html">Delivery areas and fees</a></li>
+          <li><a href="contact.html">Track your order</a></li>
+          <li><a href="contact.html#faq">FAQs</a></li>
+          <li><a href="contact.html#faq">Returns and refunds</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+        <h3>Your account</h3>
+        <ul>
+          <li><a href="login.html">Sign in</a></li>
+          <li><a href="login.html?tab=register">Create an account</a></li>
+          <li><a href="login.html">My orders</a></li>
+          <li><a href="login.html">Wishlist</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="kijanikilo.html#about">About us</a></li>
+          <li><a href="#">Our farmers</a></li>
+          <li><a href="#">Recipes</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Cookie policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Kijani Kilo. All rights reserved.</p>
+
+      <!-- SOCIAL LINKS: replace each href="#" with your real page URL -->
+      <ul class="socials" aria-label="Social media">
+        <li><a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="currentColor"/></svg></a></li>
+        <li><a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a></li>
+        <li><a href="#" aria-label="X (Twitter)" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/></svg></a></li>
+        <li><a href="#" aria-label="YouTube" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.75 15.02l5.75-3.27-5.75-3.27z" fill="currentColor"/></svg></a></li>
+        <li><a href="#" aria-label="WhatsApp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a></li>
+      </ul>
+
+      <a class="to-top" href="#" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>
