@@ -98,7 +98,7 @@ kijani-kilo/
 1. Clone the repository:
 
    ```bash
-   git clone YOUR_REPOSITORY_URL
+   git clone https://github.com/teeh0000/KIJANI-KILO-ONLINE-GROCERY.git
    ```
 
 2. Navigate to the project directory:
