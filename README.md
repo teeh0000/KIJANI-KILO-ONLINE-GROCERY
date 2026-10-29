@@ -115,7 +115,6 @@ kijani-kilo/
 
 4. Open `index.html` in your browser, or use the Live Server extension in VS Code for local development.
 
-Replace `YOUR_REPOSITORY_URL` with the actual URL of your GitHub repository.
 
 ## 🎨 Design Philosophy
 
